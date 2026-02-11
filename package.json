@@ -1,0 +1,17 @@
+{
+  "name": "siliguri-security-services",
+  "version": "1.0.0",
+  "description": "Professional security and facility management website",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build complete'"
+  },
+  "keywords": ["security", "siliguri", "facility management"],
+  "author": "Siliguri Security Services",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
+}

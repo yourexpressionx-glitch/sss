@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "public": true,
+  "buildCommand": "echo 'Static site ready'",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "functions": {
+    "api/*.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  }
+}
+

@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.siligurisisecurity.com/sitemap.xml
+
+# Disallow specific files
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /assets/admin/
+
+# Crawl delay
+Crawl-delay: 2
+
+# Allow common search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
