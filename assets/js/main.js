@@ -104,7 +104,7 @@ function handleFormSubmit(e) {
     form.reset();
 
     // Optionally open WhatsApp
-    const whatsappNumber = '918376061234';
+    const whatsappNumber = '919547253232';
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     // Uncomment the next line to open WhatsApp automatically
     // window.open(whatsappURL, '_blank');
@@ -239,7 +239,7 @@ function animateNumber(element) {
 
 // WhatsApp Direct Message
 function whatsappMessage(message) {
-    const whatsappNumber = '918376061234';
+    const whatsappNumber = '919547253232';
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
 }
