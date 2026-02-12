@@ -246,12 +246,12 @@ function whatsappMessage(message) {
 
 // Call Direct
 function initiate() {
-    window.location.href = 'tel:+918376061234';
+    window.location.href = 'tel:+919547253232';
 }
 
 // Email Direct
 function emailDirect() {
-    window.location.href = 'mailto:info@siligurisisecurity.com';
+    window.location.href = 'mailto:siliguri.security.services@gmail.com';
 }
 
 // Add CSS Animation Styles
