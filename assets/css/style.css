@@ -1,4 +1,5 @@
 /* Siliguri Security Services - Corporate Website CSS */
+/* Performance Optimized */
 
 :root {
     --primary-dark: #003366;      /* Dark Navy Blue */
@@ -21,22 +22,28 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* Avoid smooth scroll which can impact CLS */
+    scroll-behavior: auto;
+    /* Enable subpixel rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
     background-color: var(--bg-white);
 }
 
-/* Typography */
+/* Typography - Optimized for readability and performance */
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-dark);
     margin-bottom: 1rem;
     font-weight: 600;
     letter-spacing: 0.5px;
+    /* Prevent layout shift with max-width on headings */
+    max-width: 100%;
 }
 
 h1 { font-size: 2.5rem; }
@@ -519,6 +526,35 @@ tbody tr:hover {
 .badge-warning {
     background-color: rgba(255, 193, 7, 0.1);
     color: #c7a600;
+}
+
+/* Image Optimization - Prevent Layout Shift */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    /* Prevent blur during lazy loading transition */
+    will-change: opacity;
+}
+
+img[loading="lazy"] {
+    background-color: var(--bg-light);
+}
+
+/* Container for aspect ratio maintenance */
+.image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66.67%; /* 3:2 aspect ratio */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Footer */

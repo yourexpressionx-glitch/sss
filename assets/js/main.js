@@ -1,7 +1,42 @@
 // Siliguri Security Services - Main JavaScript
+// Performance Optimized
 
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
+// Lazy Load Images
+function initLazyLoading() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+        });
+    }
+}
+
+// Defer non-critical operations
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInteractiveElements);
+} else {
+    initInteractiveElements();
+}
+
+function initInteractiveElements() {
+    // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('nav ul');
 
@@ -70,16 +105,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animate numbers on scroll
     animateNumbersOnScroll();
 
-    // Add scroll event listener for nav styling
+    // Add scroll event listener for nav styling (throttled)
+    let scrollTimeout;
     window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 10px rgba(0, 51, 102, 0.15)';
-        } else {
-            header.style.boxShadow = '0 2px 5px rgba(0, 51, 102, 0.1)';
-        }
-    });
-});
+        if (scrollTimeout) return;
+        
+        scrollTimeout = setTimeout(() => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 10px rgba(0, 51, 102, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 5px rgba(0, 51, 102, 0.1)';
+            }
+            scrollTimeout = null;
+        }, 100);
+    }, { passive: true });
+}
 
 // Handle Form Submission
 function handleFormSubmit(e) {
